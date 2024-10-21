@@ -8,32 +8,57 @@ import java.time.LocalDateTime;
 @Table(name = "users")
 public class Users {
 
+	public Users() {}
+
+	public Users(String username, String first_name, String last_name, String email,
+				 String password, String bio, String profileImageUrl) {
+		this.username = username;
+		this.first_name = first_name;
+		this.last_name = last_name;
+		this.email = email;
+		this.password = password;
+		this.bio = bio;
+		this.profileImageUrl = profileImageUrl;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(unique = true, nullable = false)
 	private String username;
 
+	@Column
+	private String first_name;
+
+	@Column
+	private String last_name;
+
+	@Column(unique = true, nullable = false)
 	private String email;
 
+	@Column(nullable = false)
 	private String password;
 
-	private String firstName;
-
-	private String lastName;
-
+	@Column
 	private String bio;
 
+	@Column
 	private String profileImageUrl;
 
+	@Column(nullable = false)
 	private LocalDateTime createdAt = LocalDateTime.now();
 
+	@Column(nullable = false)
 	private LocalDateTime updatedAt = LocalDateTime.now();
 
+	@Column
 	private LocalDateTime lastLogin;
 
+	@Column(nullable = false)
 	private Boolean isActive = true;
 
+	@Column(nullable = false)
 	private Boolean isVerified = false;
 
 	public Long getId() {
@@ -52,6 +77,22 @@ public class Users {
 		this.username = username;
 	}
 
+	public String getFirstname() {
+		return first_name;
+	}
+
+	public void setFirstname(String first_name) {
+		this.first_name = first_name;
+	}
+
+	public String getLastname() {
+		return last_name;
+	}
+
+	public void setLastname(String last_name) {
+		this.last_name = last_name;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -68,21 +109,7 @@ public class Users {
 		this.password = password;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
 
 	public String getBio() {
 		return bio;

@@ -13,7 +13,8 @@ import java.util.Optional;
 
 
 /**
- * UserController handles requests concerning users
+ * The controller contains the applications endpoints/ urls.
+ * UserController handles HTTP requests concerning users.
  */
 
 @RestController
@@ -59,5 +60,4 @@ public class UsersController {
 		return ResponseEntity.noContent().build();
 	}
 
-	// Additional endpoints can be added here
 }
