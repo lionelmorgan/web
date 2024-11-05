@@ -25,7 +25,7 @@ public class Users {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(unique = true, nullable = false)
+	@Column
 	private String username;
 
 	@Column
@@ -34,10 +34,10 @@ public class Users {
 	@Column
 	private String last_name;
 
-	@Column(unique = true, nullable = false)
+	@Column
 	private String email;
 
-	@Column(nullable = false)
+	@Column
 	private String password;
 
 	@Column
@@ -46,19 +46,19 @@ public class Users {
 	@Column
 	private String profileImageUrl;
 
-	@Column(nullable = false)
+	@Column
 	private LocalDateTime createdAt = LocalDateTime.now();
 
-	@Column(nullable = false)
+	@Column
 	private LocalDateTime updatedAt = LocalDateTime.now();
 
 	@Column
 	private LocalDateTime lastLogin;
 
-	@Column(nullable = false)
+	@Column
 	private Boolean isActive = true;
 
-	@Column(nullable = false)
+	@Column
 	private Boolean isVerified = false;
 
 	public Long getId() {

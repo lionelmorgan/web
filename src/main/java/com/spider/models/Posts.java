@@ -1,7 +1,5 @@
 package com.spider.models;
 
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -26,7 +24,17 @@ public class Posts {
     private LocalDateTime created;
 
     @Column
-    private Byte[] image;
+    private byte[] image;
+
+    public Posts() {
+    }
+
+    public Posts(int user_id, String content, byte[] image) {
+        this.user_id = user_id;
+        this.content = content;
+        this.image = image;
+    }
+
 
     public int getId() {
         return id;
@@ -68,11 +76,11 @@ public class Posts {
         this.created = created;
     }
 
-    public Byte[] getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(Byte[] image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 

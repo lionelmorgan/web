@@ -23,8 +23,8 @@ public class UsersService {
 	private UsersRepo userRepository;
 
 	public Users saveUser(Users user) {
-		String pwd = user.getPassword();
-		user.setPassword(BCrypt.hashpw(pwd, BCrypt.gensalt()));
+//		String pwd = user.getPassword();
+//		user.setPassword(BCrypt.hashpw(pwd, BCrypt.gensalt()));
 		Users savedUser = userRepository.save(user);
 		logger.info("User saved: {}", savedUser);
 		return savedUser;

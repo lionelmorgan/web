@@ -1,7 +1,6 @@
 package com.spider.repos;
 
-import com.spider.models.Posts;
-import com.spider.models.Users;
+import com.spider.models.Events;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.ResponseEntity;
@@ -11,14 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+public interface EventsRepo extends JpaRepository<Events, Integer> {
 
-public interface PostsRepo extends JpaRepository<Posts, Integer> {
+    List<Events> findAll();
 
-    List<Posts> findAll();
-
-    Optional<Posts> findById(int id);
-
-
+    Optional<Events> findById(int id);
 
 
 }

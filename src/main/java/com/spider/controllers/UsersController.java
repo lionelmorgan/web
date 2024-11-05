@@ -19,15 +19,37 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UsersController {
 
 	@Autowired
 	private UsersService userService;
 
-	@PostMapping
-	public ResponseEntity<Users> createUser(@RequestBody Users user) {
-		Users savedUser = userService.saveUser(user);
-		return ResponseEntity.ok(savedUser);
+//	@PostMapping
+//	public ResponseEntity<Users> createUser(@RequestBody Users user) {
+//		Users savedUser = userService.saveUser(user);
+//		return ResponseEntity.ok(savedUser);
+//	}
+
+	@PostMapping("/signup")
+	public ResponseEntity<String> signup(@RequestBody Users user) {
+		try {
+			userService.saveUser(user);
+			return ResponseEntity.ok("Signup successful");
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body("Error signing up");
+		}
+	}
+
+	@PostMapping("/login")
+	public ResponseEntity<String> login(@RequestBody Users user) {
+		Optional<Users> foundUser = userService.getUserByUsername(user.getUsername());
+
+		if (foundUser.isPresent() && foundUser.get().getPassword().equals(user.getPassword())) {
+			return ResponseEntity.ok("Login successful");
+		} else {
+			return ResponseEntity.status(401).body("Invalid username or password");
+		}
 	}
 
 	@GetMapping("/all")
